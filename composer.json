@@ -1,0 +1,73 @@
+{
+    "name": "frenet/frenet-magento2",
+    "description":"Integrate your Magento 2 with Frenet Services in a simple way.",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "version": "2.2.5",
+    "require": {
+        "php": ">=7.0.0",
+        "frenet/frenet-php": "^1.1.0",
+        "symfony/finder": "*",
+        "magento/framework": ">=101.0.4",
+        "magento/module-catalog": ">=102.0.4",
+        "magento/module-quote": ">=101.0.3",
+        "magento/module-shipping": ">=100.2.4",
+        "magento/module-directory": ">=100.2.3",
+        "magento/module-bundle": ">=100.2.3",
+        "magento/module-grouped-product": ">=100.2.2",
+        "magento/module-configurable-product": ">=100.2.4",
+        "magento/module-downloadable": ">=100.2.3",
+        "magento/module-store": ">=100.2.3"
+    },
+    "require-dev": {
+        "magento/magento-coding-standard": "~4.0.0",
+        "magento/magento2-functional-testing-framework": "*",
+        "phpmd/phpmd": "@stable",
+        "phpunit/phpunit": "~6.5.0"
+    },
+    "suggest": {},
+    "type": "magento2-module",
+    "authors": [
+        {
+            "name": "Tiago Sampaio",
+            "email": "tiago@tiagosampaio.com",
+            "homepage": "http://tiagosampaio.com",
+            "role": "Magento Architect"
+        }
+    ],
+    "support": {
+        "email": "contato@frenet.com.br"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Frenet\\Shipping\\": ""
+        }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "tests": [
+            "@coding-standard",
+            "@phpunit"
+        ],
+        "coding-standard": [
+            "@phpcs",
+            "@phpmd"
+        ],
+        "phpunit" : "vendor/bin/phpunit Test",
+        "phpmd": "vendor/bin/phpmd Service/,Model/,Setup/,Controller/,Block/,ViewModel/ text cleancode,codesize,controversial,design,naming,unusedcode",
+        "phpcs-configure": [
+            "vendor/bin/phpcs --config-set installed_paths vendor/magento/magento-coding-standard"
+        ],
+        "phpcs": [
+            "@phpcs-configure",
+            "vendor/bin/phpcs --standard=Magento2 --severity=8 --extensions=php Service Model Setup Controller Block ViewModel"
+        ]
+    }
+}
